@@ -1,5 +1,7 @@
 
 个人为了学习将DDPush放到github中，官网地址 [http://www.ddpush.net/](http://www.ddpush.net/ "http://www.ddpush.net/")
+，以下摘自官网。
+
 
 # DDPush 概述
 
