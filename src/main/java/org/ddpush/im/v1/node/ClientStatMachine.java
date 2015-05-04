@@ -310,7 +310,6 @@ public class ClientStatMachine {
                 this.getMessengerTask().pushInstanceMessage(sm);
             } catch (Exception e) {
             }
-            ;
         }
     }
 
@@ -338,7 +337,6 @@ public class ClientStatMachine {
                 this.getMessengerTask().pushInstanceMessage(sm);
             } catch (Exception e) {
             }
-            ;
         }
     }
 
