@@ -30,7 +30,7 @@ import java.util.Date;
 
 public class IMServer {
 
-    public static IMServer server;
+    private static IMServer server;
 
     private boolean stoped = false;
 
@@ -45,7 +45,7 @@ public class IMServer {
 
     private ArrayList<Messenger> workerList = new ArrayList<Messenger>();
 
-    private Thread clearnThread = null;
+    private Thread cleanerThread = null;
     private ClientStatMachineCleaner cleaner = null;
 
     private Thread cmdThread = null;
@@ -120,8 +120,8 @@ public class IMServer {
 
     public void initCleaner() throws Exception {
         cleaner = new ClientStatMachineCleaner();
-        clearnThread = new Thread(cleaner, "IMServer-cleaner");
-        clearnThread.start();
+        cleanerThread = new Thread(cleaner, "IMServer-cleaner");
+        cleanerThread.start();
     }
 
     public void initPushListener() throws Exception {
@@ -226,7 +226,7 @@ public class IMServer {
     public void stopCleaner() throws Exception {
         cleaner.stop();
         try {
-            clearnThread.interrupt();
+            cleanerThread.interrupt();
         } catch (Exception e) {
             e.printStackTrace();
         }

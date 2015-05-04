@@ -1,7 +1,9 @@
 package org.ddpush.im.v1.node.udpconnector;
 
 
+import org.ddpush.im.util.DateTimeUtil;
 import org.ddpush.im.util.PropertyUtil;
+import org.ddpush.im.util.StringUtil;
 import org.ddpush.im.v1.node.Constant;
 import org.ddpush.im.v1.node.ServerMessage;
 
@@ -46,7 +48,7 @@ public class Sender implements Runnable {
                         } catch (InterruptedException e) {
 
                         }
-                        //System.out.println("sender wake up");
+//                        System.out.println("sender wake up");
                     }
                     processMessage();
 
@@ -69,7 +71,7 @@ public class Sender implements Runnable {
         buffer.put(pendingMessage.getData());
         buffer.flip();
         channel.send(buffer, pendingMessage.getSocketAddress());
-        //System.out.println(DateTimeUtil.getCurDateTime()+" s:"+StringUtil.convert(pendingMessage.getData())+" to  :"+pendingMessage.getSocketAddress().toString());
+        System.out.println(DateTimeUtil.getCurDateTime() + " s:" + StringUtil.convert(pendingMessage.getData()) + " to  :" + pendingMessage.getSocketAddress().toString());
     }
 
     protected boolean enqueue(ServerMessage message) {
