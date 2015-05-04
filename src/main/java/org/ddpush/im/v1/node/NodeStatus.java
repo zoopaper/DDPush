@@ -45,7 +45,8 @@ public class NodeStatus {
     public static NodeStatus getInstance() {
         if (global == null) {
             synchronized (NodeStatus.class) {
-                if (global == null) {//need to check again!!
+                //need to check again!!
+                if (global == null) {
                     global = new NodeStatus();
                     System.out.println("try load node stat file...");
                     global.tryLoadFile();

@@ -104,7 +104,8 @@ public class Receiver implements Runnable {
             if (m == null) {
                 return null;
             }
-            if (m.checkFormat() == true) {//检查包格式是否合法，为了网络快速响应，在这里检查，不在接收线程检查
+            //检查包格式是否合法，为了网络快速响应，在这里检查，不在接收线程检查
+            if (m.checkFormat() == true) {
                 return m;
             }
         }

@@ -26,7 +26,9 @@ import java.util.ArrayList;
 public class Messenger implements Runnable {
 
     private UdpConnector connector;
-    private NodeStatus nodeStat;//this is very large and dynamic
+
+    //this is very large and dynamic
+    private NodeStatus nodeStat;
     private Thread hostThread;
 
     boolean started = false;
@@ -63,7 +65,6 @@ public class Messenger implements Runnable {
             try {
                 Thread.sleep(5);
             } catch (Exception e) {
-                ;
             }
             return;
         }
@@ -78,7 +79,7 @@ public class Messenger implements Runnable {
         String uuid = m.getUuidHexString();
         //ClientStatMachine csm = NodeStatus.getInstance().getClientStat(uuid);
         ClientStatMachine csm = nodeStat.getClientStat(uuid);
-        if (csm == null) {//
+        if (csm == null) {
             csm = ClientStatMachine.newByClientTick(m);
             if (csm == null) {
                 return;

@@ -30,7 +30,7 @@ import java.util.Date;
 
 public class IMServer {
 
-    private static IMServer server;
+    public static IMServer server;
 
     private boolean stoped = false;
 

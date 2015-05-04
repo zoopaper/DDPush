@@ -48,18 +48,25 @@ public class ClientStatMachine {
 
     private static boolean createByClient = "YES".equalsIgnoreCase(PropertyUtil.getProperty("CREATE_MACHINE_BY_CLIENT")) ? true : false;
 
+    //最后心跳时间
+    private long lastTick = -1;
+    //最后心跳等的网络地址
+    private SocketAddress lastAddr = null;
 
-    private long lastTick = -1;//最后心跳时间
-    private SocketAddress lastAddr = null;//最后心跳等的网络地址
+    //是否有通用信息未接收
+    private boolean hasMessage0x10 = false;
+    //最后通用信息时间
+    private long last0x10Time = -1;
 
-    private boolean hasMessage0x10 = false;//是否有通用信息未接收
-    private long last0x10Time = -1;//最后通用信息时间
+    //最新分类信息通知
+    private long message0x11 = 0;
+    //最新分类信息通知时间
+    private long last0x11Time = -1;
 
-    private long message0x11 = 0;//最新分类信息通知
-    private long last0x11Time = -1;//最新分类信息通知时间
-
-    private int message0x20Len = 0;//是否有自定义信息未接收
-    private long last0x20Time = -1;//最新自定义信息时间
+    //是否有自定义信息未接收
+    private int message0x20Len = 0;
+    //最新自定义信息时间
+    private long last0x20Time = -1;
     private byte[] message0x20 = null;
 
     //private MessengerTask messengerTask = null;

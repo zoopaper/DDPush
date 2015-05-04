@@ -8,8 +8,8 @@ import java.net.InetSocketAddress;
 import java.nio.channels.DatagramChannel;
 
 public class UdpConnector {
-
-    protected DatagramChannel antenna;//天线
+    //天线
+    protected DatagramChannel antenna;
 
     protected Receiver receiver;
     protected Sender sender;
