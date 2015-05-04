@@ -150,7 +150,7 @@ public class NIOPushListener implements Runnable {
         }
     }
 
-    private void  handleEvent() {
+    private void handleEvent() {
         Runnable r = null;
         while (true) {
             r = events.poll();

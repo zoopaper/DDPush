@@ -21,14 +21,14 @@ package org.ddpush.im.v1.node;
 
 
 public class Constant {
-	
-	//final
-	public static final int CLIENT_MESSAGE_MIN_LENGTH = 21;
-	public static final int CLIENT_MESSAGE_MAX_LENGTH = 29;
-	public static final int SERVER_MESSAGE_MIN_LENGTH = 5;
-	public static final int PUSH_MSG_HEADER_LEN = 21;
-	
-	public static int VERSION_NUM = 1;
+
+    //final
+    public static final int CLIENT_MESSAGE_MIN_LENGTH = 21;
+    public static final int CLIENT_MESSAGE_MAX_LENGTH = 29;
+    public static final int SERVER_MESSAGE_MIN_LENGTH = 5;
+    public static final int PUSH_MSG_HEADER_LEN = 21;
+
+    public static int VERSION_NUM = 1;
 //	
 //	//nio push listener config
 //	public static int PUSH_MSG_MAX_CONTENT_LEN = 500;//自定义内容最大字节
@@ -50,6 +50,6 @@ public class Constant {
 //	
 //	//console
 //	public static int CONSOLE_TCP_PORT = 9900;
-	
-	
+
+
 }

@@ -26,48 +26,48 @@ import org.ddpush.im.v1.client.appuser.UDPClientBase;
 
 public class MyUdpClient extends UDPClientBase {
 
-	public MyUdpClient(byte[] uuid, int appid, String serverAddr, int serverPort)
-			throws Exception {
-		super(uuid, appid, serverAddr, serverPort);
-		// TODO Auto-generated constructor stub
-	}
+    public MyUdpClient(byte[] uuid, int appid, String serverAddr, int serverPort)
+            throws Exception {
+        super(uuid, appid, serverAddr, serverPort);
+        // TODO Auto-generated constructor stub
+    }
 
-	@Override
-	public boolean hasNetworkConnection() {
-		// TODO Auto-generated method stub
-		return true;
-	}
+    @Override
+    public boolean hasNetworkConnection() {
+        // TODO Auto-generated method stub
+        return true;
+    }
 
-	@Override
-	public void onPushMessage(Message message) {
-		if(message == null){
-			System.out.println("msg is null");
-		}
-		if(message.getData() == null || message.getData().length == 0){
-			System.out.println("msg has no data");
-		}
-		System.out.println(StringUtil.convert(this.uuid)+"---"+StringUtil.convert(message.getData()));
+    @Override
+    public void onPushMessage(Message message) {
+        if (message == null) {
+            System.out.println("msg is null");
+        }
+        if (message.getData() == null || message.getData().length == 0) {
+            System.out.println("msg has no data");
+        }
+        System.out.println(StringUtil.convert(this.uuid) + "---" + StringUtil.convert(message.getData()));
 
-	}
+    }
 
-	@Override
-	public void trySystemSleep() {
-		// TODO Auto-generated method stub
+    @Override
+    public void trySystemSleep() {
+        // TODO Auto-generated method stub
 
-	}
-	
-	public static void main(String[] args){
-		try{
-			byte[] uuid = StringUtil.md5Byte("0");
-			MyUdpClient myUdpClient = new MyUdpClient(uuid,1,"192.168.2.111",9966);
-			myUdpClient.setHeartbeatInterval(50);
-			myUdpClient.start();
-			synchronized(myUdpClient){
-				myUdpClient.wait();
-			}
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-	}
+    }
+
+    public static void main(String[] args) {
+        try {
+            byte[] uuid = StringUtil.md5Byte("0");
+            MyUdpClient myUdpClient = new MyUdpClient(uuid, 1, "192.168.2.111", 9966);
+            myUdpClient.setHeartbeatInterval(50);
+            myUdpClient.start();
+            synchronized (myUdpClient) {
+                myUdpClient.wait();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 }

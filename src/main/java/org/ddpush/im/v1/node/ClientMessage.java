@@ -19,104 +19,103 @@ limitations under the License.
 */
 package org.ddpush.im.v1.node;
 
+import org.ddpush.im.util.StringUtil;
+
 import java.net.SocketAddress;
 import java.nio.ByteBuffer;
 
-import org.ddpush.im.util.StringUtil;
-import org.ddpush.im.v1.node.ClientStatMachine;
+public final class ClientMessage {
 
-public final class ClientMessage{
-	
-	protected SocketAddress address;
-	protected byte[] data;
-	
-	public ClientMessage(SocketAddress address, byte[] data) throws Exception{
-		this.address = address;
-		this.data = data;
-	}
-	
+    protected SocketAddress address;
+    protected byte[] data;
+
+    public ClientMessage(SocketAddress address, byte[] data) throws Exception {
+        this.address = address;
+        this.data = data;
+    }
+
 //	public static org.ddpush.im.node.Message getNewInstance(){
 //		return null;
 //	}
-	
-	public void setData(byte[] data){
-		this.data = data;
-	}
-	
-	public byte[] getData(){
-		return this.data;
-	}
-	
-	public SocketAddress getSocketAddress(){
-		return this.address;
-	}
-	
-	public void setSocketAddress(SocketAddress addr){
-		this.address = addr;
-	}
-	
-	public int getVersionNum(){
-		byte b = data[0];
-		return b & 0xff;
-	}
-	
-	public int getCmd(){
-		byte b = data[2];
-		return b & 0xff;
-	}
-	
-	public int getDataLength(){
-		return (int)ByteBuffer.wrap(data, 19, 2).getChar();
-	}
-	
-	public String getUuidHexString(){
-		return StringUtil.convert(data, 3, 16);
-	}
-	
-	public boolean checkFormat(){
-		if(this.data == null){
-			return false;
-		}
-		if(data.length < Constant.CLIENT_MESSAGE_MIN_LENGTH){
-			return false;
-		}
-		if(getVersionNum() != Constant.VERSION_NUM){
-			return false;
-		}
 
-		int cmd = getCmd();
-		if(cmd != ClientStatMachine.CMD_0x00
-				//&& cmd != ClientStatMachine.CMD_0x01
-				&& cmd != ClientStatMachine.CMD_0x10
-				&& cmd != ClientStatMachine.CMD_0x11
-				&& cmd != ClientStatMachine.CMD_0x20
-				&& cmd != ClientStatMachine.CMD_0xff){
-			return false;
-		}
-		int dataLen = getDataLength();
-		if(data.length != dataLen + Constant.CLIENT_MESSAGE_MIN_LENGTH){
-			return false;
-		}
-		
-		if(cmd ==  ClientStatMachine.CMD_0x00 && dataLen != 0){
-			return false;
-		}
-		
-		if(cmd ==  ClientStatMachine.CMD_0x10 && dataLen != 0){
-			return false;
-		}
-		
-		if(cmd ==  ClientStatMachine.CMD_0x11 && dataLen != 8){
-			return false;
-		}
-		
-		if(cmd ==  ClientStatMachine.CMD_0x20 && dataLen != 0){
-			return false;
-		}
-		
-		return true;
-	}
-	
+    public void setData(byte[] data) {
+        this.data = data;
+    }
+
+    public byte[] getData() {
+        return this.data;
+    }
+
+    public SocketAddress getSocketAddress() {
+        return this.address;
+    }
+
+    public void setSocketAddress(SocketAddress addr) {
+        this.address = addr;
+    }
+
+    public int getVersionNum() {
+        byte b = data[0];
+        return b & 0xff;
+    }
+
+    public int getCmd() {
+        byte b = data[2];
+        return b & 0xff;
+    }
+
+    public int getDataLength() {
+        return (int) ByteBuffer.wrap(data, 19, 2).getChar();
+    }
+
+    public String getUuidHexString() {
+        return StringUtil.convert(data, 3, 16);
+    }
+
+    public boolean checkFormat() {
+        if (this.data == null) {
+            return false;
+        }
+        if (data.length < Constant.CLIENT_MESSAGE_MIN_LENGTH) {
+            return false;
+        }
+        if (getVersionNum() != Constant.VERSION_NUM) {
+            return false;
+        }
+
+        int cmd = getCmd();
+        if (cmd != ClientStatMachine.CMD_0x00
+                //&& cmd != ClientStatMachine.CMD_0x01
+                && cmd != ClientStatMachine.CMD_0x10
+                && cmd != ClientStatMachine.CMD_0x11
+                && cmd != ClientStatMachine.CMD_0x20
+                && cmd != ClientStatMachine.CMD_0xff) {
+            return false;
+        }
+        int dataLen = getDataLength();
+        if (data.length != dataLen + Constant.CLIENT_MESSAGE_MIN_LENGTH) {
+            return false;
+        }
+
+        if (cmd == ClientStatMachine.CMD_0x00 && dataLen != 0) {
+            return false;
+        }
+
+        if (cmd == ClientStatMachine.CMD_0x10 && dataLen != 0) {
+            return false;
+        }
+
+        if (cmd == ClientStatMachine.CMD_0x11 && dataLen != 8) {
+            return false;
+        }
+
+        if (cmd == ClientStatMachine.CMD_0x20 && dataLen != 0) {
+            return false;
+        }
+
+        return true;
+    }
+
 //	public byte[] getUUID(){
 //		return 
 //	}
