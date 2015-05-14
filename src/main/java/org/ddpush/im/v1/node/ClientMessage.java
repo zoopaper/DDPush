@@ -24,6 +24,9 @@ import org.ddpush.im.util.StringUtil;
 import java.net.SocketAddress;
 import java.nio.ByteBuffer;
 
+/**
+ * 服务端接收消息
+ */
 public final class ClientMessage {
 
     protected SocketAddress address;
