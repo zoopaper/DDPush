@@ -34,9 +34,6 @@ public final class ClientMessage {
         this.data = data;
     }
 
-//	public static org.ddpush.im.node.Message getNewInstance(){
-//		return null;
-//	}
 
     public void setData(byte[] data) {
         this.data = data;
@@ -115,9 +112,5 @@ public final class ClientMessage {
 
         return true;
     }
-
-//	public byte[] getUUID(){
-//		return 
-//	}
 
 }

@@ -12,6 +12,9 @@ import java.nio.channels.DatagramChannel;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.atomic.AtomicLong;
 
+/**
+ * UDP异步发送
+ */
 public class Sender implements Runnable {
     protected DatagramChannel channel;
     protected AtomicLong queueIn = new AtomicLong(0);
@@ -61,6 +64,10 @@ public class Sender implements Runnable {
         }
     }
 
+    /**
+     * 发送消息，从队列中取出消息
+     * @throws Exception
+     */
     protected void processMessage() throws Exception {
         buffer.clear();
         ServerMessage pendingMessage = dequeue();
@@ -90,6 +97,11 @@ public class Sender implements Runnable {
         return m;
     }
 
+    /**
+     * 发送消息入队列
+     * @param message
+     * @return
+     */
     public boolean send(ServerMessage message) {
         return enqueue(message);
     }

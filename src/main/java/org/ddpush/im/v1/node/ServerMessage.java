@@ -21,6 +21,9 @@ package org.ddpush.im.v1.node;
 
 import java.net.SocketAddress;
 
+/**
+ * UDP服务端发送消息
+ */
 public final class ServerMessage {
 
     protected SocketAddress address;
