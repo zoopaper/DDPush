@@ -7,6 +7,9 @@ import org.ddpush.im.v1.node.ServerMessage;
 import java.net.InetSocketAddress;
 import java.nio.channels.DatagramChannel;
 
+/**
+ * 客户端UDP连接器
+ */
 public class UdpConnector {
     //天线
     protected DatagramChannel antenna;

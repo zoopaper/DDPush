@@ -32,7 +32,9 @@ import java.util.Set;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
-
+/**
+ * 客户端TCP连接器
+ */
 public class NIOTcpConnector implements Runnable {
     private static int sockTimout = 1000 * PropertyUtil.getPropertyInt("CLIENT_TCP_SOCKET_TIMEOUT");
     private static int port = PropertyUtil.getPropertyInt("CLIENT_TCP_PORT");
@@ -78,7 +80,6 @@ public class NIOTcpConnector implements Runnable {
             selector.wakeup();
         } catch (Exception e) {
         }
-        ;
     }
 
     public void addEvent(Runnable event) {

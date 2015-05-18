@@ -34,7 +34,8 @@ public class IMServer {
 
     private boolean stoped = false;
 
-    int workerNum = PropertyUtil.getPropertyInt("CLIENT_UDP_WORKER_THREAD");//fixed work threads
+    //fixed work threads
+    int workerNum = PropertyUtil.getPropertyInt("CLIENT_UDP_WORKER_THREAD");
 
     private UdpConnector udpConnector;
 
@@ -72,13 +73,12 @@ public class IMServer {
     }
 
     public void init() throws Exception {
-        initPushListener();
+        initPushListener ();
         initConsole();
         initUdpConnector();
         initTcpConnector();
         initWorkers();
         initCleaner();
-
     }
 
     public void initConsole() throws Exception {
