@@ -86,14 +86,10 @@ public class NIOTcpConnector implements Runnable {
         if (selector == null) {
             return;
         }
-
         events.add(event);
-
         if (stoped == false && selector != null) {
             selector.wakeup();
         }
-
-
     }
 
     @Override

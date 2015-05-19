@@ -27,6 +27,9 @@ import java.nio.channels.SelectionKey;
 import java.nio.channels.SocketChannel;
 import java.util.ArrayList;
 
+/**
+ * 信使任务线程
+ */
 public class MessengerTask implements Runnable {
 
     private NIOTcpConnector listener;
